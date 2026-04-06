@@ -39,3 +39,63 @@
     --fw-medium: 500;
     --fw-regular: 400;
 }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Roboto";
+    width: 70vh;
+    margin: 0 auto;
+}
+header{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+}
+.logo {
+    /* font-size: var(--fs-h4); */
+    font-weight: var(--fw-bold);
+    color: var(--color-brand-primary);
+}
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    
+}
+header ul li a {
+    text-decoration: none;
+    color: var(--color-text-main);
+    /* font-size: var(--fs-headline); */
+    font-weight: var(--fw-medium);
+}
+header ul li:first-child a {
+   color: var(--color-brand-primary);
+   font-weight: var(--fw-bold); /* Suele quedar bien que el activo resalte más */
+}
+header li:hover {
+    cursor: pointer;
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+
+}
+header button {
+    background-color: var(--color-brand-primary);
+    /* font-size: var(--fs-headline); */
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+.hero-image img{
+    width: 70%;
+}
