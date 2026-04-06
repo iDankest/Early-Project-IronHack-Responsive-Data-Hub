@@ -1,0 +1,41 @@
+:root {
+    /* Brand Colors - Para elementos principales */
+    --color-brand-primary: #072AC8;   
+    --color-brand-secondary: #43D2FF; 
+    --color-brand-accent: #FFC600;    
+    /* UI Colors - Para fondos y variantes */
+    --color-ui-soft-blue: #A2D6F9;    
+    --color-ui-pale-blue: #D1EDFF;    
+    --color-bg-main: #F2F4FC;         
+    --color-bg-light: #ECF7FF;        
+    /* Text Colors - Tipografía */
+    --color-text-main: #292E47;       
+    --color-text-muted: #6B708D;      
+    /* Semantic - Para estados */
+    --color-status-warning: #FFC600;
+/* Text Styles */
+/* Heading H1 60 Bold */
+/* Heading H2 50 Bold */
+/* Heading H3 40 Bold */
+/* Heading H4 24 Bold */
+/* Body Intro Text 24 Medium */
+/* Body Intro Text 20 Regular */
+/* Headline Text 17 Regular */
+/* Headline Text 17 Medium */
+/* Caption 1 Text 15 Regular */
+/* Caption 2 Text 13 Regular */
+    /* Font Sizes */
+    --fs-h1: 60px;
+    --fs-h2: 50px;
+    --fs-h3: 40px;
+    --fs-h4: 24px;
+    --fs-body-intro: 24px;
+    --fs-body-reg: 20px;
+    --fs-headline: 17px;
+    --fs-caption-1: 15px;
+    --fs-caption-2: 13px;
+    /* Font Weights (Grosores) */
+    --fw-bold: 700;
+    --fw-medium: 500;
+    --fw-regular: 400;
+}
