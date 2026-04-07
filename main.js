@@ -15,6 +15,35 @@ const createProjectCard = (project) => {
     `;
 };
 
+const projectDetailsContainer = document.getElementById('project-details');
+
+const createProjectDetail = (project) => {
+    return `
+        <section class="project-detail">
+            <div class="container">
+                <div class="back-button">
+                    <a href="index.html">← Volver a proyectos</a>
+                </div>
+                
+                <div class="project-header">
+                    <h1>${project.name}</h1>
+                    <div>
+                        <p class="project-tagline">${project.description}</p>
+                        <p class="project-date">${project.completed_on}</p>
+                    </div>
+                </div>
+                
+                <img src="${project.image}" alt="${project.name}" class="project-main-image">
+                
+                <div class="project-content">
+                    <h2>Sobre este proyecto</h2>
+                    <p>${project.content}</p>
+                </div>
+            </div>
+        </section>
+    `;
+};
+
 // 2. Función principal para obtener y pintar los datos
 async function loadProjects() {
     try {
@@ -33,5 +62,27 @@ async function loadProjects() {
     }
 }
 
+async function loadProjectDetail() {
+    try {
+        const response = await fetch(API_URL);
+        const projects = await response.json();
+        
+        const project = projects.find(p => p.uuid === window.location.search.split('=')[1]);
+        
+        if (!project) {
+            projectDetailsContainer.innerHTML = '<p>Proyecto no encontrado.</p>';
+            return;
+        }
+        
+        projectDetailsContainer.innerHTML = createProjectDetail(project);
+        
+    } catch (error) {
+        console.error('Error cargando proyecto:', error);
+        projectDetailsContainer.innerHTML = '<p>Error al cargar el proyecto. Inténtalo más tarde.</p>';
+    }
+}
+
 // 3. Ejecutamos
 loadProjects();
+
+loadProjectDetail();
