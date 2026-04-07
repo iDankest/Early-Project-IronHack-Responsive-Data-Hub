@@ -18,7 +18,7 @@ Este proyecto es la culminación de la primera fase del Bootcamp de **Ironhack**
 
 ### 💻 Stack Tecnológico
 * **Estructura:** HTML5 Semántico.
-* **Estilos:** Tailwind CSS (Maquetación ágil y moderna).
+* **Estilos:** CSS (Maquetación ágil y moderna).
 * **Lógica:** JavaScript ES6+ (Manipulación del DOM y Fetch API).
 * **Diseño:** Prototipado en Figma.
 
