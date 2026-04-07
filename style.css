@@ -141,7 +141,7 @@ header button {
     position: absolute;
     top: 5%;
     left: 0;
-    width: 50%; /* Ajusta según necesites */
+    width: 50%; 
     z-index: 2;
 }
 
@@ -150,7 +150,7 @@ header button {
     position: absolute;
     bottom: -15%;
     right: -10%;
-    width: 50%; /* Ajusta según necesites */
+    width: 50%; 
     z-index: 2;
 }
 .hero-content {
@@ -212,7 +212,7 @@ header button {
 }
 .testimonials {
    background-color: var(--color-text-main);
-    width: 80vw; /* Ocupa todo el ancho de la ventana */
+    width: 80vw; 
     position: relative;
     left: 65%;
     right: 50%;
@@ -222,10 +222,10 @@ header button {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 30vh; /* Ajusta el alto a tu gusto */
-    overflow: hidden; /* Evita scrolls horizontales raros por los emojis */
+    min-height: 30vh; 
+    overflow: hidden; 
 }
-/* El fondo sordo */
+
 .orbit-bg {
     position: absolute;
     width: 100%;
@@ -236,7 +236,6 @@ header button {
 .container-emoji {
     display: grid;
     z-index: 2;
-    /* Definimos el mapa visual */
     grid-template-areas: 
         "top-left     center       top-right"
         "    .        center        .    "
@@ -249,7 +248,6 @@ header button {
     width: 90%;
 }
 
-/* Asignamos cada cosa a su sitio */
 .emoji-tl { grid-area: top-left; }
 .emoji-tr { grid-area: top-right; }
 .emoji-bl { grid-area: bottom-left; }
@@ -352,3 +350,44 @@ footer div:first-child ul{
     gap: 1rem;
     align-items: center;
 }
+
+#projects-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #ffffff;
+    width: 30%;
+    height: 400px;
+}
+
+.projects{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.project-card img {
+    width: 100%;
+    height: 70%;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.project-info a {
+    color: var(--color-brand-accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
