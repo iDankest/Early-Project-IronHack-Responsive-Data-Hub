@@ -36,7 +36,6 @@ const createProjectDetail = (project) => {
                 <img src="${project.image}" alt="${project.name}" class="project-main-image">
                 
                 <div class="project-content">
-                    <h2>Sobre este proyecto</h2>
                     <p>${project.content}</p>
                 </div>
             </div>
