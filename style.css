@@ -312,5 +312,43 @@ header button {
 .card:hover {
     transform: scale(1.05);
     transition: transform 0.3s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.services h2 {
+    margin-top: 5rem;
+    margin-left: 3.5%;
+}
+.banner {
+    background-color: var(--color-brand-accent);
+    color: var(--color-text-main);
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+footer div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+footer div:nth-child(2) ul{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    width: 250px;
+    align-items: center;
+}
+footer div:first-child ul{
+    display: flex;
+    width: 250px;
+    list-style: none;
+    gap: 1rem;
+    align-items: center;
 }
