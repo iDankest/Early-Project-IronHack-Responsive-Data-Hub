@@ -339,11 +339,13 @@ header button {
     margin-bottom: 3rem;
     max-width: 1400px;
 }
+
 footer div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 footer div:nth-child(2) {
     display: flex;
@@ -492,4 +494,58 @@ width: 70%;
 section, header, footer{
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+@media (max-width: 768px) {
+    #projects-container {
+        flex-direction: column;
+    }
+    .project-card {
+        width: 70%;
+    }
+    .projects h2 {
+        text-align: center;
+    }
+    #services-container {
+        flex-direction: column;
+    }
+    #services-container .card {
+        width: 70%;
+    }
+    .container h2 {
+        text-align: center;
+    }
+
+    #menu-burger, #cerrar {
+        display: block;
+        font-size: 1.25rem;
+        background-color: transparent;
+        cursor: pointer;
+
+    }
+    header nav{
+        display: flex;
+        opacity: 0;
+        visibility: hidden;
+        background-color: var(--color-brand-secondary);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+    }
+    .visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    header nav ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

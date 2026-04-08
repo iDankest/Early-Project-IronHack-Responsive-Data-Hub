@@ -1,5 +1,9 @@
 const API_URL = "https://raw.githubusercontent.com/ironhack-jc/mid-term-api/main/projects";
 const projectsContainer = document.getElementById('projects-container');
+const nav = document.querySelector('nav');
+const abrir = document.getElementById('menu-burger');
+const cerrar = document.getElementById('cerrar');
+
 
 // 1. Definimos la función que crea el HTML de cada tarjeta
 const createProjectCard = (project) => {
@@ -81,7 +85,21 @@ async function loadProjectDetail() {
     }
 }
 
+abrir.addEventListener('click', () => {
+    nav.classList.add('visible');
+    abrir.style.display = 'none';
+});
+
+cerrar.addEventListener('click', () => {
+    nav.classList.remove('visible');
+    abrir.style.display = 'block';
+});
+
+
+
+
 // 3. Ejecutamos
 loadProjects();
 
 loadProjectDetail();
+
