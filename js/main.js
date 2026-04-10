@@ -79,6 +79,7 @@ async function loadProjectDetail() {
         
         projectDetailsContainer.innerHTML = createProjectDetail(project);
         
+        
     } catch (error) {
         console.error('Error cargando proyecto:', error);
         projectDetailsContainer.innerHTML = '<p>Error al cargar el proyecto. Inténtalo más tarde.</p>';
@@ -97,9 +98,9 @@ cerrar.addEventListener('click', () => {
 
 
 
-
 // 3. Ejecutamos
 loadProjects();
-
 loadProjectDetail();
+
+
 

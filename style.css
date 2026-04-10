@@ -497,6 +497,15 @@ section, header, footer{
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
+nav{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+    #menu-burger, #cerrar {
+        display: none;
+    }
 @media (max-width: 768px) {
     #projects-container {
         flex-direction: column;
