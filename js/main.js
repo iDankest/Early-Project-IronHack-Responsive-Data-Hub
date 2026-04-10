@@ -1,19 +1,20 @@
 const API_URL = "https://raw.githubusercontent.com/ironhack-jc/mid-term-api/main/projects";
 const projectsContainer = document.getElementById('projects-container');
-const nav = document.querySelector('nav');
-const abrir = document.getElementById('menu-burger');
-const cerrar = document.getElementById('cerrar');
 
 
 // 1. Definimos la función que crea el HTML de cada tarjeta
 const createProjectCard = (project) => {
+    // Detectamos si ya estamos dentro de la carpeta 'pages'
+    const isInsidePages = window.location.pathname.includes('/pages/'); // true si estamos en /pages/project.html
+    const basePath = isInsidePages ? "./project.html" : "./pages/project.html"; // Ternario para determinar la ruta base con true o false
+
     return `
         <article class="project-card">
             <img src="${project.image}" alt="${project.name}">
             <div class="project-info">
                 <h3>${project.name}</h3>
                 <p>${project.description}</p>
-                <a href="./project.html?id=${project.uuid}">Learn more</a>
+                <a href="${basePath}?id=${project.uuid}">Learn more</a>
             </div>
         </article>
     `;
@@ -25,9 +26,6 @@ const createProjectDetail = (project) => {
     return `
         <section class="project-detail">
             <div class="container">
-                <div class="back-button">
-                    <a href="index.html">← Volver a proyectos</a>
-                </div>
                 
                 <div class="project-header">
                     <h1>${project.name}</h1>
@@ -86,21 +84,13 @@ async function loadProjectDetail() {
     }
 }
 
-abrir.addEventListener('click', () => {
-    nav.classList.add('visible');
-    abrir.style.display = 'none';
-});
-
-cerrar.addEventListener('click', () => {
-    nav.classList.remove('visible');
-    abrir.style.display = 'block';
-});
-
-
 
 // 3. Ejecutamos
 loadProjects();
-loadProjectDetail();
+const isInsidePagesRenderContent = window.location.pathname.includes('/pages/'); //Controlo los Errores de ruta para que no se ejecute en todas las PAGES 
+if (isInsidePagesRenderContent) {
+    loadProjectDetail();
+}
 
 
 
