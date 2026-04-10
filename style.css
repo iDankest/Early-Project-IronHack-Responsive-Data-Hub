@@ -202,6 +202,8 @@ header button {
     cursor: pointer;
     filter: grayscale(0%);
 }
+
+/* Testimonials section  Me quise complicar con una solucion con Grip Area ya se que la proxima no lo voy hacer asi XD*/
 .grid-wrapper {
     position: relative;
     display: flex;
@@ -261,7 +263,7 @@ header button {
 #testimonials-container > p { 
     color: var(--color-brand-accent);
     font-size: 24px;
-    width: 60%;
+    /* width: 60%; Esto es asurdo cuando hay una solucion mas sencilla con Br en HTML */
     margin: 0 auto;
 }
 
@@ -290,6 +292,7 @@ header button {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    object-fit:cover;
 }
 .emoji-tl, .emoji-tr, .emoji-bl, .emoji-br {
     width: 100px;
