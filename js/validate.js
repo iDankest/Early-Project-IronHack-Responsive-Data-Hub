@@ -41,11 +41,13 @@ const validateInput = (input) => {
     else if(name === 'message')  isValid = validateMessage(value);
 
 // Esto va UNA sola vez, fuera de todos los if
-    input.classList.toggle('valido', isValid);
-    input.classList.toggle('invalido', !isValid);
-    input.nextElementSibling.style.display = isValid ? 'none' : 'block';
-    
-    return isValid;
+
+    const validationResult = typeof isValid === 'object' ? isValid : {valido: isValid, mensaje: ''};
+    input.classList.toggle('valido', validationResult.valido);
+    input.classList.toggle('invalido', !validationResult.valido);
+    input.nextElementSibling.style.display = validationResult.valido ? 'none' : 'block';
+    input.nextElementSibling.textContent = validationResult.mensaje;
+    return validationResult;
 };
 
 // 2. Aplicamos la lógica a cada input
@@ -66,29 +68,42 @@ inputs.forEach((input) => {
 }
 
 function validateEmail(email) {
+    if (email === "") return {valido: false, mensaje: "El email es obligatorio"};
+    if (!email.includes("@")) return {valido: false, mensaje: "Falta el @ - ejemplo@email.com"}
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return emailRegex.test(email)
+    ? {valido: true, mensaje: ""}
+    : {valido: false, mensaje: "El email no es válido - ejemplo@email.com"};
 }
 function validateName(name) {
+    if (name === "") return {valido: false, mensaje: "El nombre es obligatorio"};
     const nameRegex = /^[a-zA-Z\s]+$/;
     if(name.length < 2) {
-        return false;
+        return {valido: false, mensaje: "El nombre debe tener al menos 2 caracteres"};
     }
-    return nameRegex.test(name);
+    return nameRegex.test(name)
+    ? {valido: true, mensaje: ""}
+    : {valido: false, mensaje: "El nombre solo letras, sin numeros"};
 }
 function validatePhone(phone) {
+    if (phone === "") return {valido: false, mensaje: "El teléfono es obligatorio"};
     const phoneRegex = /^\d{9}$/;
     if(phone.length !== 9) {
-        return false;
+        return {valido: false, mensaje: "El teléfono debe tener 9 dígitos"};
     }
-    return phoneRegex.test(phone);
+    return phoneRegex.test(phone)
+    ? {valido: true, mensaje: ""}
+    : {valido: false, mensaje: "El teléfono solo números, sin espacios"};
 }
 function validateMessage(message) {
+    if (message === "") return {valido: false, mensaje: "El mensaje es obligatorio"};
     const messageRegex = /^[a-zA-Z0-9\s]+$/;
     if (message.length < 10) {
-        return false;
+        return {valido: false, mensaje: "El mensaje debe tener al menos 10 caracteres"};
     }
-    return messageRegex.test(message);
+    return messageRegex.test(message)
+    ? {valido: true, mensaje: ""}
+    : {valido: false, mensaje: "Sin caracteres especiales"};
 }
 
 
