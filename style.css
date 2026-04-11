@@ -599,3 +599,16 @@ nav{
         text-shadow: #b4cf06 0px 0px, #0649cf 0px 0px;
     }
 }
+
+
+input.valido, textarea.valido {
+  border-color: #38a169;
+  border-left: 4px solid #38a169;
+  box-shadow: -4px 0 10px rgba(56, 161, 105, 0.4); 
+}
+
+input.invalido, textarea.invalido {
+  border-color: #e53e3e;
+  border-left: 2px solid #e53e3e;
+  box-shadow: -4px 0 10px rgba(229, 62, 62, 0.4); 
+}

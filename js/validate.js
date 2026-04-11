@@ -30,24 +30,65 @@ form.addEventListener('submit', (e) => {
 {
 // 1. Creamos la lógica de validación
 const validateInput = (input) => {
-    if (input.value.trim() === "") {
-        input.style.border = '4px solid red';
-        input.nextElementSibling.style.display = 'block';
-    } else {
-        input.style.border = '4px solid green';
-        input.nextElementSibling.style.display = 'none';
-    }
+    const value = input.value;
+    const name = input.getAttribute('name');
+
+    let isValid = false;
+
+    if(name === 'email')    isValid = validateEmail(value);
+    else if(name === 'name')     isValid = validateName(value);
+    else if(name === 'phone')    isValid = validatePhone(value);
+    else if(name === 'message')  isValid = validateMessage(value);
+
+// Esto va UNA sola vez, fuera de todos los if
+    input.classList.toggle('valido', isValid);
+    input.classList.toggle('invalido', !isValid);
+    input.nextElementSibling.style.display = isValid ? 'none' : 'block';
+    
+    return isValid;
 };
 
 // 2. Aplicamos la lógica a cada input
 inputs.forEach((input) => {
     // Cuando el usuario hace clic o entra (foco)
-    input.addEventListener('focus', () => validateInput(input));
+    input.addEventListener('focus', () => {
+        const isValid = validateInput(input);
+        console.log(`Validación de ${input.getAttribute('name')}:`, isValid);
+    });
 
     // Mientras el usuario escribe
-    input.addEventListener('input', () => validateInput(input));
+    input.addEventListener('input', () => {
+        const isValid = validateInput(input);
+        console.log(`Validación de ${input.getAttribute('name')}:`, isValid);
+    });
 });
 }
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+function validateName(name) {
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if(name.length < 2) {
+        return false;
+    }
+    return nameRegex.test(name);
+}
+function validatePhone(phone) {
+    const phoneRegex = /^\d{9}$/;
+    if(phone.length !== 9) {
+        return false;
+    }
+    return phoneRegex.test(phone);
+}
+function validateMessage(message) {
+    const messageRegex = /^[a-zA-Z0-9\s]+$/;
+    if (message.length < 10) {
+        return false;
+    }
+    return messageRegex.test(message);
 }
 
 
