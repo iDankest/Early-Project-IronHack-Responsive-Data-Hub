@@ -6,6 +6,7 @@
     <title>Circle - Contact</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="/Assets/logos/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <header>
@@ -23,6 +24,7 @@
         </nav>
         
     </header>
+    
 <main id="contact">
     <form action="" id="form">
         <label for="name">
@@ -50,7 +52,8 @@
         <button type="submit">Send</button>
     </form>
 </main>
- 
+
+
  <footer>
         <div><h2>Circle</h2>
         <ul>
@@ -68,6 +71,27 @@
                 </ul>
         </div>
     </footer>
+    <div id="modal" style="display:none">
+    <div class="modal-content">
+        <div id="close-modal">✕</div>
+
+        <!-- Fase 1 -->
+        <div class="loader" id="modal-spinner"></div>
+
+        <!-- Fase 2 y 3 (ocultas hasta que toca) -->
+        <div id="modal-success" style="display:none">
+            <svg class="checkmark" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14 27 l7 7 l16 -16"/>
+            </svg>
+            <p id="msg-principal"></p>
+            <p id="msg-secundario" style="display:none">Contestaremos en la mayor brevedad 💙</p>
+            <p class="footer-donate" id="msg-donate" style="display:none">
+                ¿Contento con el servicio? <br> Puedes invitarnos a un café ☕ 
+                <span>Bizum: <strong>612 345 678</strong></span>
+            </p>
+    </div>
+</div>
     </body>
 <script src="../js/validate.js" defer></script>
 <script src="../js/burger.js" defer></script>
