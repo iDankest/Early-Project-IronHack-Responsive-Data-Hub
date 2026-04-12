@@ -1,5 +1,70 @@
 const form = document.getElementById('form');
 const inputs = document.querySelectorAll('input, textarea')
+// Feedback de Modal al enviar formulario con todos los campos Validados
+const msgPrincipal = document.getElementById('msg-principal');
+
+function mostrarModal() {
+    const modal         = document.getElementById('modal');
+    const spinner       = document.getElementById('modal-spinner');
+    const success       = document.getElementById('modal-success');
+    const msgSecundario = document.getElementById('msg-secundario');
+    const msgDonate     = document.getElementById('msg-donate');
+
+    // Mostramos el modal con el spinner
+    modal.style.display = 'block';
+    spinner.style.display = 'block';
+    success.style.display = 'none';
+
+    // Fase 2: quitamos spinner, mostramos ✅
+setTimeout(() => {
+    spinner.style.display = 'none';
+    success.style.display = 'flex';
+    success.style.flexDirection = 'column';
+    success.style.alignItems = 'center';
+    success.style.gap = '1rem';
+
+    // Calculamos la posición del modal relativa a la ventana
+    const modal = document.querySelector('.modal-content');
+    const rect = modal.getBoundingClientRect();
+
+    const leftX  = rect.left / window.innerWidth;    // borde izquierdo del modal
+    const rightX = rect.right / window.innerWidth;   // borde derecho del modal
+    const centerY = (rect.top + rect.height / 2) / window.innerHeight; // centro vertical
+
+    // Desde el borde izquierdo → hacia afuera a la izquierda
+    confetti({
+        particleCount: 60,
+        angle: 180,   // apunta hacia la izquierda
+        spread: 60,
+        origin: { x: leftX, y: centerY },
+        colors: ['#072AC8', '#43D2FF', '#FFC600']
+    });
+
+    // Desde el borde derecho → hacia afuera a la derecha
+    confetti({
+        particleCount: 60,
+        angle: 0,   // apunta hacia la derecha
+        spread: 60,
+        origin: { x: rightX, y: centerY },
+        colors: ['#072AC8', '#43D2FF', '#FFC600']
+    });
+
+}, 2000);
+
+    // Fase 3: aparece el mensaje secundario
+    setTimeout(() => {
+        msgSecundario.style.display = 'block';
+        msgDonate.style.display = 'block';
+    }, 3000);
+}
+
+// Botón cerrar modal
+document.getElementById('close-modal').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'none';
+});
+
+// Y en tu submit, llama a mostrarModal() cuando todosValidos:
+// if (todosValidos) { mostrarModal(); }
 
 function fundForm() {
     if(!form) {
@@ -26,6 +91,16 @@ function validateFormStyle(){
 form.addEventListener('submit', (e) => {
     e.preventDefault(); 
     inputValuesALL();
+    
+    // Verificar si todos los campos son válidos
+    const todosValidos = Array.from(inputs).every(input => 
+        input.classList.contains('valido') && !input.classList.contains('invalido')
+    );
+    
+    if (todosValidos) {
+        msgPrincipal.innerHTML = `¡Gracias por tu mensaje!<br>${inputs[0].value}`; //Le pasamos al Modal el nombre del usuario
+        mostrarModal(); // Mostramos el modal de confirmación
+    }
 });
 {
 // 1. Creamos la lógica de validación
@@ -66,7 +141,7 @@ inputs.forEach((input) => {
 });
 }
 }
-
+// Test de validación usando RegEx
 function validateEmail(email) {
     if (email === "") return {valido: false, mensaje: "El email es obligatorio"};
     if (!email.includes("@")) return {valido: false, mensaje: "Falta el @ - ejemplo@email.com"}
